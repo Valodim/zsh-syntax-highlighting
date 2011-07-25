@@ -161,6 +161,9 @@ for event in ${${(f)"$(zle -la)"}:#(_*|orig-*|.run-help|.which-command|.beep)}; 
 done
 unset event clean_event
 
+colorize-hook-self-insert() { url-quote-magic && _zsh_highlight }
+zle -N self-insert colorize-hook-self-insert
+
 # Start highlighting immediately after the creation of a new command line.
 autoload add-zsh-hook && add-zsh-hook precmd _zsh_highlight
 
